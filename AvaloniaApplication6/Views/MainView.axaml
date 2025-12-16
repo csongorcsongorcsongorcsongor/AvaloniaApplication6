@@ -1,0 +1,48 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AvaloniaApplication6.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaApplication6.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+    <Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="Model:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding ModelInput}" VerticalAlignment="Center"/>
+
+      <Label Grid.Row="1" Grid.Column="0" Content="Type:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TypeInput}" VerticalAlignment="Center"/>
+
+      <Label Grid.Row="2" Grid.Column="0" Content="Year:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding YearInput}" VerticalAlignment="Center"/>
+
+       <Label Grid.Row="3" Grid.Column="0" Content="Miles:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding MilesInput}" VerticalAlignment="Center"/>
+
+
+
+      <Button Grid.Row="4" Grid.Column="0" Content="Save" Command="{Binding SaveCommand}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      <Button Grid.Row="4" Grid.Column="1" Content="Load" Command="{Binding LoadCommand}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+    </Grid>
+
+</UserControl>

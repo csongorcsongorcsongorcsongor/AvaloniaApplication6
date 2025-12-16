@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaApplication6", "AvaloniaApplication6\AvaloniaApplication6.csproj", "{0ED10F1C-0A80-4133-E8CE-882AE6147565}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaApplication6.Android", "AvaloniaApplication6.Android\AvaloniaApplication6.Android.csproj", "{5EEEEBC2-6D0F-6DCE-6297-AF9E22318E0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaApplication6.Desktop", "AvaloniaApplication6.Desktop\AvaloniaApplication6.Desktop.csproj", "{A2ECE863-1F0B-43DB-E745-CC0DB0E6548C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0ED10F1C-0A80-4133-E8CE-882AE6147565}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ED10F1C-0A80-4133-E8CE-882AE6147565}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ED10F1C-0A80-4133-E8CE-882AE6147565}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ED10F1C-0A80-4133-E8CE-882AE6147565}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EEEEBC2-6D0F-6DCE-6297-AF9E22318E0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EEEEBC2-6D0F-6DCE-6297-AF9E22318E0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EEEEBC2-6D0F-6DCE-6297-AF9E22318E0C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5EEEEBC2-6D0F-6DCE-6297-AF9E22318E0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EEEEBC2-6D0F-6DCE-6297-AF9E22318E0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EEEEBC2-6D0F-6DCE-6297-AF9E22318E0C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A2ECE863-1F0B-43DB-E745-CC0DB0E6548C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2ECE863-1F0B-43DB-E745-CC0DB0E6548C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2ECE863-1F0B-43DB-E745-CC0DB0E6548C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2ECE863-1F0B-43DB-E745-CC0DB0E6548C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CD113A9B-9B3F-4A78-AE37-423FAFBA3771}
+	EndGlobalSection
+EndGlobal
