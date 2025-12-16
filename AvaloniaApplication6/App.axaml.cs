@@ -60,9 +60,10 @@ public partial class App : Application
                     Title = "Load Car",
                     AllowMultiple = false,
                 });
+
                 if (file is not null)
                 {
-                    mainModel.Load(file[0].Path.AbsolutePath);
+                    await mainModel.Load(file[0].Path.AbsolutePath);
                 }
             };
         }

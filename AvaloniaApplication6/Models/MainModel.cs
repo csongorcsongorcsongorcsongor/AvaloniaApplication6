@@ -10,33 +10,33 @@ namespace AvaloniaApplication6.Models
 {
     public class MainModel
     {
-        private IDataAccess _dataAccess;
+        private readonly IDataAccess _dataAccess;
 
-        public event EventHandler<CarEventArgs> CarCreated;
+        public event EventHandler<CarEventArgs>? CarLoaded;
 
+        public Car? CurrentCar { get; private set; }
 
-        public List<Car> cars;
-        public List<Car> removedCars;
-        public MainModel(IDataAccess access) {
-            cars = new List<Car>();
-            removedCars = new List<Car>();
-            _dataAccess = access;
-
-        }
-
-        public void Save(string path)
+        public MainModel(IDataAccess access)
         {
-            _dataAccess.Save(path, cars);
-
+            _dataAccess = access;
         }
+
+        public void SetCar(Car car)
+        {
+            CurrentCar = car;
+        }
+
+        public async Task Save(string path)
+        {
+            if (CurrentCar != null)
+                await _dataAccess.Save(path, CurrentCar);
+        }
+
         public async Task Load(string path)
         {
-            List<Car> newCars = await _dataAccess.Load(path);
-            foreach (Car p in newCars)
-            {
-                cars.Add(p);
-                CarCreated.Invoke(this, new CarEventArgs(p));
-            }
+            CurrentCar = await _dataAccess.Load(path);
+            if (CurrentCar != null)
+                CarLoaded?.Invoke(this, new CarEventArgs(CurrentCar));
         }
     }
 }

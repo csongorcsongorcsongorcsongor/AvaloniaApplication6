@@ -10,51 +10,30 @@ namespace AvaloniaApplication6.Persistence
 {
     public class TextDataAccess : IDataAccess
     {
-        public async Task<List<Car>> Load(string path)
+        public async Task Save(string path, Car car)
         {
-            List<Car> cars = new List<Car>();
-            using (StreamReader reader = new StreamReader(path))
-            {
-                try
-                {
-                    string numberOfPeople = await reader.ReadLineAsync();
-
-                    for (int i = 0; i < int.Parse(numberOfPeople); i++)
-                    {
-                        string line = await reader.ReadLineAsync();
-                        string[] data = line.Split(";");
-                        Car car = new Car(data[0], data[1], int.Parse(data[2]), int.Parse(data[3]));
-                        cars.Add(car);
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                }
-
-            }
-            return cars;
+            using StreamWriter writer = new StreamWriter(path, false);
+            await writer.WriteLineAsync(car.ToString());
         }
 
-        public async Task Save(string path, List<Car> people)
+        public async Task<Car?> Load(string path)
         {
-            using (StreamWriter writer = new StreamWriter(path))
-            {
-                try
-                {
-                    string num = people.Count.ToString();
-                    await writer.WriteLineAsync(num);
-                    for (int i = 0; i < people.Count; i++)
-                    {
-                        string line = people[i].ToString();
-                        await writer.WriteLineAsync(line);
-                    }
-                }
-                catch (Exception ex)
-                {
+            if (!File.Exists(path))
+                return null;
 
-                }
-            }
+            using StreamReader reader = new StreamReader(path);
+            string? line = await reader.ReadLineAsync();
+
+            if (string.IsNullOrWhiteSpace(line))
+                return null;
+
+            string[] data = line.Split(';');
+            return new Car(
+                data[0],
+                data[1],
+                int.Parse(data[2]),
+                int.Parse(data[3])
+            );
         }
     }
 }

@@ -1,46 +1,48 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using AvaloniaApplication6.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 namespace AvaloniaApplication6.ViewModels;
 
 public partial class MainViewModel : ViewModelBase
 {
-    private MainModel _model;
-    public string ModelInput { get; set; }
-    public string TypeInput { get; set; }
-    public int AgeInput { get; set; }
-    public int MilesInput { get; set; }
+    private readonly MainModel _model;
 
-    public ObservableCollection<Car> Cars { get; set; }
-    public RelayCommand AddCarCommand { get; set; }
+    [ObservableProperty] private string modelInput = "";
+    [ObservableProperty] private string typeInput = "";
+    [ObservableProperty] private int ageInput;
+    [ObservableProperty] private int milesInput;
 
-    public RelayCommand SaveCommand { get; set; }
-    public RelayCommand LoadCommand { get; set; }
-    public event EventHandler SaveEvent;
-    public event EventHandler LoadEvent;
+    public RelayCommand SaveCommand { get; }
+    public RelayCommand LoadCommand { get; }
+
+    public event EventHandler? SaveEvent;
+    public event EventHandler? LoadEvent;
 
     public MainViewModel(MainModel model)
     {
         _model = model;
-        _model.CarCreated += _model_CarCreated;
-        Cars = new ObservableCollection<Car>();
-        AddCarCommand = new RelayCommand(AddCar);
-       
-        SaveCommand = new RelayCommand(() => { SaveEvent?.Invoke(this, EventArgs.Empty); });
-        LoadCommand = new RelayCommand(() => { LoadEvent?.Invoke(this, EventArgs.Empty); });
+        _model.CarLoaded += Model_CarLoaded;
+
+        SaveCommand = new RelayCommand(OnSave);
+        LoadCommand = new RelayCommand(() => LoadEvent?.Invoke(this, EventArgs.Empty));
     }
 
-
-    private void _model_CarCreated(object? sender, CarEventArgs e)
+    private void OnSave()
     {
-        Car carr = new Car(e.Car.Model, e.Car.Type, e.Car.Age, e.Car.Miles);
-        Cars.Add(carr);
+        var car = new Car(ModelInput, TypeInput, AgeInput, MilesInput);
+        _model.SetCar(car);
+        SaveEvent?.Invoke(this, EventArgs.Empty);
     }
-    private void AddCar()
+
+    private void Model_CarLoaded(object? sender, CarEventArgs e)
     {
-        Car carr = new Car(ModelInput, TypeInput, AgeInput, MilesInput);
-        Cars.Add(carr);
+        ModelInput = e.Car.Model;
+        TypeInput = e.Car.Type;
+        AgeInput = e.Car.Age;
+        MilesInput = e.Car.Miles;
     }
 }
+

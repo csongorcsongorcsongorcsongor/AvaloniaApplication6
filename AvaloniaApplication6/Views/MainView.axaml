@@ -32,7 +32,7 @@
       <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TypeInput}" VerticalAlignment="Center"/>
 
       <Label Grid.Row="2" Grid.Column="0" Content="Year:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-      <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding YearInput}" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding AgeInput}" VerticalAlignment="Center"/>
 
        <Label Grid.Row="3" Grid.Column="0" Content="Miles:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
       <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding MilesInput}" VerticalAlignment="Center"/>

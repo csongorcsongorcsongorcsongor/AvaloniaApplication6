@@ -9,11 +9,7 @@ namespace AvaloniaApplication6.Persistence
 {
     public interface IDataAccess
     {
-        Task Save(string path, List<Car> cars);
-
-        //returns List<Person>
-        Task<List<Car>> Load(string path);
-
-       
+        Task Save(string path, Car car);
+        Task<Car?> Load(string path);
     }
 }
